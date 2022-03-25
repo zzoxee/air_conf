@@ -7,7 +7,11 @@ let params = getParams($argument)
     let dateTime = Math.floor(traffic.startTime * 1000)
     let startTime = timeTransform(dateNow, dateTime)
 
-    if ($trigger === "button") await httpAPI("/v1/profiles/reload");
+    if ($trigger === "button") {
+        setTimeout(async () => {
+            await httpAPI("/v1/profiles/reload");
+        }, 500)
+    }
 
     $done({
         title: "Surge Pro",
