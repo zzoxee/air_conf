@@ -8,9 +8,7 @@ let params = getParams($argument)
     let startTime = timeTransform(dateNow, dateTime)
 
     if ($trigger === "button") {
-        setTimeout(async () => {
-            await httpAPI("/v1/profiles/reload");
-        }, 1500)
+        await httpAPI("/v1/profiles/reload");
     }
 
     $done({
