@@ -10,7 +10,7 @@ let params = getParams($argument)
     if ($trigger === "button") {
         setTimeout(async () => {
             await httpAPI("/v1/profiles/reload");
-        }, 500)
+        }, 1500)
     }
 
     $done({
