@@ -39,10 +39,10 @@ function timeTransform(dateNow, dateTime) {
 
     if (days === 0) {
         if (hours === 0) {
-            if (minutes === 0) return (`00:00:${seconds}`);
-            return (`00:${minutes}:${seconds}`)
+            if (minutes === 0) return (`${seconds}秒`);
+            return (`${minutes}分${seconds}秒`)
         }
-        return (`${hours}:${minutes}:${seconds}`)
+        return (`${hours}时${minutes}分${seconds}秒`)
     } else {
         return (`${days}天${hours}时${minutes}分`)
     }
