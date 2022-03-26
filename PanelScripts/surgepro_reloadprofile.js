@@ -13,7 +13,7 @@ let params = getParams($argument)
 
     $done({
         title: "Surge Pro",
-        content: `通透世界: ʚ${startTime}ɞ`,
+        content: `通透世界: ʚ|${startTime}|ɞ`,
         icon: params.icon,
         "icon-color": params.color
     });
@@ -22,28 +22,31 @@ let params = getParams($argument)
 
 function timeTransform(dateNow, dateTime) {
     let dateDiff = dateNow - dateTime;
-    //计算出相差天数
+    // 计算出相差天数
     let days = Math.floor(dateDiff / (24 * 3600 * 1000))
-    //计算天数后剩余的毫秒数
+    // 计算天数后剩余的毫秒数
     let leave1 = dateDiff % (24 * 3600 * 1000)
-    //计算出小时数
+    // 计算出小时数
     let hours = Math.floor(leave1 / (3600 * 1000))
-    //计算相差分钟数
+    // 计算相差分钟数
     let leave2 = leave1 % (3600 * 1000)
     let minutes = Math.floor(leave2 / (60 * 1000))
-    //计算相差秒数
-    let leave3 = leave2 % (60 * 1000)      //计算分钟数后剩余的毫秒数
+    // 计算相差秒数
+    let leave3 = leave2 % (60 * 1000)
     let seconds = Math.round(leave3 / 1000)
 
-    if (days === 0) {
-        if (hours === 0) {
-            if (minutes === 0) return (`${seconds}秒`);
-            return (`${minutes}分${seconds}秒`)
-        }
-        return (`${hours}时${minutes}分${seconds}秒`)
-    } else {
-        return (`${days}天${hours}时${minutes}分`)
+    seconds = seconds < 10 ? ('0' + seconds) : seconds
+    let result = `${seconds}秒`
+    if (minutes > 0) {
+        minutes = minutes < 10 ? ('0' + minutes) : minutes
+        result = `${minutes}分` + result
     }
+    if (hours > 0) {
+        hours = days * 24 + hours
+        hours = hours < 10 ? ('0' + hours) : hours
+        result = `${hours}时` + result
+    }
+    return result
 }
 
 
