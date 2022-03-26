@@ -12,7 +12,7 @@ let params = getParams($argument)
     }
 
     $done({
-        title: "Surge Pro",
+        title: "Surge Ultra",
         content: `通透世界: ʚ|${startTime}|ɞ`,
         icon: params.icon,
         "icon-color": params.color
