@@ -36,17 +36,11 @@ function timeTransform(dateNow, dateTime) {
     let seconds = Math.round(leave3 / 1000)
 
     seconds = seconds < 10 ? ('0' + seconds) : seconds
-    let result = `${seconds}秒`
-    if (minutes > 0) {
-        minutes = minutes < 10 ? ('0' + minutes) : minutes
-        result = `${minutes}分` + result
-    }
-    if (hours > 0) {
-        hours = days * 24 + hours
-        hours = hours < 10 ? ('0' + hours) : hours
-        result = `${hours}时` + result
-    }
-    return result
+    minutes = minutes < 10 ? ('0' + minutes) : minutes
+    hours = days * 24 + hours
+    hours = hours < 10 ? ('0' + hours) : hours
+
+    return `${hours}:${minutes}:${seconds}`
 }
 
 
