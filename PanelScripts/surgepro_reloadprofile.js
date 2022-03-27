@@ -1,7 +1,7 @@
 let params = getParams($argument)
 
 !(async () => {
-    /* 时间获取 */
+    // 获取时间
     let traffic = (await httpAPI("/v1/traffic", "GET"));
     let dateNow = new Date();
     let dateTime = Math.floor(traffic.startTime * 1000);
