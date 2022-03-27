@@ -2,10 +2,10 @@ let params = getParams($argument)
 
 !(async () => {
     // 获取时间
-    let traffic = (await httpAPI("/v1/traffic", "GET"));
-    let dateNow = new Date();
-    let dateTime = Math.floor(traffic.startTime * 1000);
-    let startTime = timeTransform(dateNow, dateTime);
+    const traffic = (await httpAPI("/v1/traffic", "GET"));
+    const dateNow = new Date();
+    const dateTime = Math.floor(traffic.startTime * 1000);
+    const startTime = timeTransform(dateNow, dateTime);
 
     if ($trigger === "button") {
         await httpAPI("/v1/profiles/reload");
@@ -14,25 +14,25 @@ let params = getParams($argument)
     $done({
         title: params.title || `Surge Ultra`,
         content: (params.content || `通透世界`) + `: ʚ|-${startTime}-|ɞ`,
-        icon: params.icon,
-        "icon-color": params.color
+        icon: params.icon || `crown.fill`,
+        "icon-color": params.color || `#f6c970`
     });
 
 })();
 
 function timeTransform(dateNow, dateTime) {
-    let dateDiff = dateNow - dateTime;
+    const dateDiff = dateNow - dateTime;
     // 计算出相差天数
-    let days = Math.floor(dateDiff / (24 * 3600 * 1000));
+    const days = Math.floor(dateDiff / (24 * 3600 * 1000));
     // 计算天数后剩余的毫秒数
-    let leave1 = dateDiff % (24 * 3600 * 1000);
+    const leave1 = dateDiff % (24 * 3600 * 1000);
     // 计算出小时数
     let hours = Math.floor(leave1 / (3600 * 1000));
     // 计算相差分钟数
-    let leave2 = leave1 % (3600 * 1000);
+    const leave2 = leave1 % (3600 * 1000);
     let minutes = Math.floor(leave2 / (60 * 1000));
     // 计算相差秒数
-    let leave3 = leave2 % (60 * 1000);
+    const leave3 = leave2 % (60 * 1000);
     let seconds = Math.round(leave3 / 1000);
 
     seconds = seconds < 10 ? ('0' + seconds) : seconds;
