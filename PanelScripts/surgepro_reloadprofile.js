@@ -1,4 +1,4 @@
-let params = getParams($argument)
+let params = getParams()
 
 !(async () => {
     // 获取时间
@@ -52,8 +52,8 @@ function httpAPI(path = "", method = "POST", body = null) {
     });
 }
 
-function getParams(param) {
-    if (param === undefined || param == null) {
+function getParams() {
+    if (typeof $argument != 'undefined') {
         return {}
     }
     return Object.fromEntries(
