@@ -53,6 +53,9 @@ function httpAPI(path = "", method = "POST", body = null) {
 }
 
 function getParams(param) {
+    if (param === undefined || param == null) {
+        return {}
+    }
     return Object.fromEntries(
         $argument
             .split("&")
