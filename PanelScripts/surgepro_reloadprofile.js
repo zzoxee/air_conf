@@ -53,7 +53,7 @@ function httpAPI(path = "", method = "POST", body = null) {
 }
 
 function getParams() {
-    if (typeof $argument != 'undefined') {
+    if (typeof $argument === 'undefined') {
         return {}
     }
     return Object.fromEntries(
